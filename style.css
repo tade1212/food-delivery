@@ -1,0 +1,786 @@
+/* --- General Styles --- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f4;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+header {
+  background-color: black !important;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  border-bottom: 3px solid #d9534f;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: honeydew;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+header nav ul li {
+  margin-left: 25px;
+}
+header nav a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+header nav a:hover {
+  color: ivory;
+}
+
+/* --- Hero Section (Homepage) --- */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: rgb(12, 212, 219);
+  color: green;
+  margin-top: 30px;
+  border-radius: 8px;
+}
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.btn {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: gold !important;
+}
+
+/* --- Category Links on Homepage --- */
+.category-preview {
+  padding: 40px 0;
+  text-align: center;
+}
+.category-preview h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.category-button {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.category-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  color: green;
+}
+.category-button h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+.category-button p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* === MENU PAGE STYLES === */
+.menu-page-title {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.menu-page-title h2 {
+  color: #218838 !important;
+}
+.menu-category {
+  margin-bottom: 50px;
+  padding-top: 70px;
+  margin-top: -70px;
+}
+.category-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  border-bottom: 3px solid #d9534f;
+  padding-bottom: 15px;
+  margin-bottom: 40px;
+}
+
+.menu-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.menu-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.menu-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.menu-card-content h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.menu-card-content .description {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0 0 15px 0;
+  flex-grow: 1;
+}
+
+.menu-card-content .price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #d9534f;
+  margin: 10px 0;
+}
+
+.btn-order {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-order:hover {
+  background-color: #218838;
+}
+
+/* === MODAL STYLES (SHARED) === */
+.cart-modal,
+.options-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === CART MODAL STYLES === */
+#cart-icon {
+  background-color: #d9534f;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+#cart-icon:hover {
+  background-color: #c9302c;
+}
+.cart-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#cart-items .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+#cart-items .cart-item:last-child {
+  border-bottom: none;
+}
+#cart-total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+#checkout-btn {
+  display: block;
+  width: 100%;
+  background-color: #d9534f;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+#checkout-btn:hover {
+  background-color: #c9302c;
+}
+
+/* === OPTIONS MODAL STYLES === */
+.options-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+.close-options-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#options-form .form-group {
+  margin-bottom: 20px;
+}
+#options-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+#options-form select,
+#options-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+#options-form button.btn {
+  width: 100%;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  padding: 12px 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: white;
+  margin-top: 10px;
+  box-sizing: border-box;
+  background-color: #28a745;
+}
+#options-form button.btn:hover {
+  background-color: #218838;
+}
+
+/* === FOOTER STYLES === */
+footer {
+  background-color: #333;
+  color: #ccc;
+  padding: 40px 0 0 0;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 40px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.footer-section.about .logo-text {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #d9534f;
+}
+
+.footer-section p {
+  line-height: 1.6;
+}
+
+.footer-section.links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section.links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section.links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-section.links a:hover {
+  color: #fff;
+  padding-left: 5px;
+}
+
+.footer-section.contact .contact-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-section.contact .contact-item span:first-child {
+  margin-right: 10px;
+  color: #d9534f;
+  font-size: 1.2rem;
+}
+
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  background-color:white;
+  height: 44px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.socials a img {
+  width: 48px;
+  height: 48px;
+}
+
+.socials a:hover {
+  background-color:gray;
+}
+
+.footer-bottom {
+  background-color:black;
+  color: #999;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+/* ====== Toast Notification Styles ====== */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000; /* Ensure it's on top of everything */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.toast {
+  background-color: #333;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  min-width: 250px;
+  font-size: 16px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.success {
+  background-color: #28a745; /* Green */
+}
+
+.toast.error {
+  background-color: #d9534f; /* Red */
+}
+/* ====== START: Continuous Marquee-Style Scrolling Animation ====== */
+
+/* 1. Define the continuous scrolling keyframes */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(-100%); /* Start just off-screen to the right */
+  }
+  100% {
+    transform: translateX(100%); /* End just off-screen to the left */
+  }
+}
+
+/* 2. Apply the animation to our title */
+.scrolling-text {
+  display: inline-block; /* Required for transform */
+  animation-name: marquee-scroll;
+  animation-duration: 20s; /* Adjust duration to change speed (longer = slower) */
+  animation-timing-function: linear; /* Crucial for a smooth, non-stop speed */
+  animation-iteration-count: infinite; /* Make the animation repeat forever */
+  color: var(--success-color); /* Set the text color to green */
+  white-space: nowrap; /* Prevent the text from breaking into new lines */
+  padding-left: 100%; /* Ensures the text starts off-screen */
+}
+
+/* 3. The container to hide the overflow remains the same */
+.scrolling-text-container {
+  width: 100%;
+  overflow: hidden; /* Hides the text when it's outside the container */
+  padding: 20px 0; /* Add some vertical space */
+}
+
+/* Base styling for the text inside */
+.scrolling-text h2 {
+  font-size: 2.5rem;
+  margin: 0; /* Remove default margins from h2 */
+}
+
+/* ====== START: Modal Button Style (Simplified) ====== */
+
+.btn-modal-submit {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px 20px;
+
+  /* This sets the background color to green */
+  background-color: #28a745;
+
+  color: white; /* White text */
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+
+  border: none;
+  border-radius: 50px;
+
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+  /* No transitions or hover effects are defined, so nothing will happen on hover */
+}
+
+/* We can optionally add a hover rule to explicitly state nothing changes,
+   or make the cursor change to show it's clickable but not changing style. */
+.btn-modal-submit:hover {
+  /* No style changes here */
+  background-color: #28a745; /* Stays the same green */
+}
+
+/* ====== END: Modal Button Style (Simplified) ====== */
+@media (max-width: 992px) {
+  .container {
+    width: 95%;
+  }
+
+  .header .container {
+    flex-direction: column; /* Stack logo and nav vertically */
+    gap: 15px;
+  }
+
+  .checkout-container {
+    flex-direction: column; /* Stack form and summary vertically */
+  }
+
+  .special-product {
+    flex-direction: column; /* Stack special image and details vertically */
+    text-align: center;
+  }
+}
+
+/* --- For Mobile Phones (e.g., screens smaller than 768px) --- */
+@media (max-width: 768px) {
+  /* -- General Adjustments -- */
+  body {
+    -webkit-text-size-adjust: 100%; /* Prevents iOS from zooming in on text */
+  }
+
+  /* -- Header -- */
+  header nav ul {
+    flex-direction: column; /* Stack nav links vertically */
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  header nav ul li {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  header nav a {
+    display: block; /* Make the whole area clickable */
+    padding: 10px;
+  }
+  #cart-icon,
+  .admin-header-link {
+    display: inline-block;
+    width: auto;
+  }
+
+  /* -- Homepage -- */
+  .hero h2 {
+    font-size: 2rem;
+  }
+  .category-grid {
+    grid-template-columns: 1fr; /* Make category buttons full width */
+  }
+  .special-product img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* -- Menu Page -- */
+  .menu-list-grid {
+    grid-template-columns: 1fr; /* Make menu cards stack vertically */
+  }
+  .menu-card-image {
+    height: 220px; /* Adjust image height for mobile */
+  }
+
+  /* -- Modals (Cart and Options) -- */
+  .cart-modal-content,
+  .options-modal-content {
+    width: 90%;
+    margin: 10% auto; /* Reduce top margin */
+    padding: 20px;
+  }
+
+  /* =================================== */
+  /* ====== COMPACT FOOTER STYLES ====== */
+  /* =================================== */
+
+  /* =================================== */
+  /* ====== COMPACT FOOTER STYLES ====== */
+  /* =================================== */
+
+  footer {
+    background-color:black; /* Dark blue */
+    color: #bdc3c7; /* Lighter grey text */
+    padding: 40px 0 0 0;
+    margin-top: 60px;
+    font-size: 0.9rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+  }
+
+  .footer-section h2 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #d9534f;
+    display: inline-block;
+  }
+
+  .footer-section.about .logo-text span {
+    color: #d9534f;
+  }
+
+  .footer-section p {
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .contact-info p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+  }
+  .contact-info i {
+    color: #d9534f;
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+  }
+
+  .map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    height: 140px;
+    margin-top: 15px;
+  }
+
+  /* ====== START: MODIFIED SOCIAL ICON STYLES ====== */
+  .socials {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .socials a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px; /* Increased size */
+    height: 44px; /* Increased size */
+    border-radius: 50%;
+    background-color: white!important; /* CHANGED to pure green */
+    color: #ffffff;
+    font-size: 22px; /* INCREASED icon size */
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .socials a:hover {
+    background-color: #0275d8 !important; /* CHANGED to a nice blue */
+    transform: translateY(-3px);
+  }
+  /* ====== END: MODIFIED SOCIAL ICON STYLES ====== */
+
+  .footer-bottom {
+    background-color: #233140;
+    color: #999;
+    padding: 15px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.8rem;
+  }
+
+  .admin-link {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .admin-link:hover {
+    color: #fff;
+  }
+
+  /* -- Admin Pages -- */
+  .admin .header-nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+}
+
+/* --- For Very Small Mobile Phones (e.g., screens smaller than 480px) --- */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header .logo {
+    font-size: 1.5rem;
+  }
+  .hero {
+    padding: 40px 15px;
+  }
+  .category-title {
+    font-size: 1.8rem;
+  }
+  .menu-card-content h4 {
+    font-size: 1.3rem;
+  }
+}
