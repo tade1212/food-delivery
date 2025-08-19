@@ -10,7 +10,7 @@ $db_server = "localhost";
 $db_username = "root";
 $db_password = "";
 $db_name = "professor_cafe_db";
-$conn = new mysqli($db_server, $db_username, $db_password, $db_name);
+$conn = new mysqli($db_server, $db_username, $db_password, $db_name,$db_port);
 
 if (!$conn->connect_error) {
     date_default_timezone_set('Africa/Addis_Ababa'); // Set timezone for consistency

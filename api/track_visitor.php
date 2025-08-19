@@ -11,8 +11,8 @@ $db_server = "localhost";
 $db_username = "root";
 $db_password = ""; // ====== FIX: SET PASSWORD TO EMPTY (as per our previous fixes) ======
 $db_name = "professor_cafe_db";
-$db_port = 3306; // ====== FIX: ADDED THE CORRECT PORT ======
-$conn_tracker = new mysqli($db_server, $db_username, $db_password, $db_name); // ====== FIX: USE THE PORT VARIABLE ======
+$db_port = 3307; // ====== FIX: ADDED THE CORRECT PORT ======
+$conn_tracker = new mysqli($db_server, $db_username, $db_password, $db_name,$db_port); // ====== FIX: USE THE PORT VARIABLE ======
 
 // Only proceed if the connection is successful
 if (!$conn_tracker->connect_error) {

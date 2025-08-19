@@ -8,7 +8,7 @@ $db_password = "";
 $db_name = "professor_cafe_db";
 // NOTE: After reinstalling XAMPP, you are now on the default port 3306.
 // If you change it back to 3307 in the future, you must add the port variable here.
-$conn = new mysqli($db_server, $db_username, $db_password, $db_name);
+$conn = new mysqli($db_server, $db_username, $db_password, $db_name,$db_port);
 
 if ($conn->connect_error) { 
     die("Menu connection failed: " . $conn->connect_error); 
