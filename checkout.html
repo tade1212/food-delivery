@@ -1,112 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout - professor cafe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Order - Professor Cafe</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-      .checkout-container { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px; }
-      .customer-details, .order-summary { flex: 1; min-width: 300px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); }
-      .form-group { margin-bottom: 20px; }
-      .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
-      .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
-      .order-summary-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
-      #summary-total { margin-top: 20px; font-weight: bold; font-size: 1.5rem; text-align: right; }
-      #toast-container { position: fixed; top: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
-      .toast { background-color: #333; color: white; padding: 16px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); margin-bottom: 10px; opacity: 0; transform: translateX(100%); transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); min-width: 250px; font-size: 16px; }
-      .toast.show { opacity: 1; transform: translateX(0); }
-      .toast.success { background-color: #28a745; }
-      .toast.error { background-color: #d9534f; }
+        .file-name {
+    display: inline-block;
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+        .checkout-container { display: flex; flex-direction: column; gap: 40px; margin-top: 20px; }
+        .customer-details, .order-summary { width: 100%; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.07); box-sizing: border-box;}
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        #summary-total { margin-top: 20px; font-weight: bold; font-size: 1.8rem; text-align: center; color: #d9534f; }
+        .payment-instructions { padding: 20px; background-color: #fcf8e3; border: 1px solid #faebcc; border-radius: 8px; margin-bottom: 20px; }
+        .payment-instructions h3 { margin-top: 0; }
+        .payment-instructions p { margin: 5px 0; line-height: 1.6; }
+        #upload-group label { font-size: 1.2rem; color: #333; }
+        #receipt-preview { max-width: 150px; margin-top: 15px; border-radius: 5px; display: none; }
+        .btn-submit-order {
+            width: 100%; padding: 15px; font-size: 18px; font-weight: bold; color: white;
+            background-color: #999; border: none; border-radius: 5px;
+            cursor: not-allowed; transition: background-color 0.3s;
+        }
+        .btn-submit-order.enabled { background-color: #28a745; cursor: pointer; }
+        #toast-container { position: fixed; top: 20px; right: 20px; z-index: 2000; }
+        .toast { /* ... toast styles ... */ }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <div class="container">
-        <h1 class="logo">professor Cafe</h1>
-        <nav>
-          <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="menu.php">Our Menu</a></li>
-            <li><a href="track_order.php">Track Order</a></li>
-            <li><a href="contact.php">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+        <div class="container">
+            <h1 class="logo">professor Cafe</h1>
+            <nav>
+                 <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="menu.php">Our Menu</a></li>
+                    <li><a href="track_order.php">Track Order</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-      <div class="container">
-        <h2>Checkout</h2>
-        <div class="checkout-container">
-          <section class="customer-details">
-            <h3>Your Information</h3>
-            <form id="checkout-form">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" required />
-              </div>
-              <div class="form-group">
-                <label for="address">Delivery Address</label>
-                <input type="text" id="address" placeholder="e.g., Campus Block 5, Room 101" required />
-              </div>
-              <!-- ===== BUTTON NOW HAS A UNIQUE ID ===== -->
-              <button type="submit" id="place-order-btn" class="btn" style="width: 100%; background-color: #28a745">Place Order</button>
-            </form>
-          </section>
-          <section class="order-summary">
-            <h3>Your Order</h3>
-            <div id="order-summary-items"></div>
-            <div id="summary-total">Total: 0.00 Birr</div>
-          </section>
+        <div class="container">
+            <h2>Complete Your Order</h2>
+            <div class="checkout-container">
+                <section class="order-summary">
+                    <h3>Your Order Summary</h3>
+                    <div id="order-summary-items"></div>
+                    <div id="summary-total">Total: 0.00 Birr</div>
+                </section>
+
+                <section class="customer-details">
+                    <form id="checkout-form" enctype="multipart/form-data">
+                        <div class="payment-instructions">
+                            <h3> Make Payment</h3>
+                            <p>Please pay the total amount shown above to:</p>
+                            <p><strong>CBE Account:</strong> 1000123456789</p>
+                            <p>After paying, take a screenshot of the receipt.</p>
+                        </div>
+                        <h3>Your Information</h3>
+                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="customer_name" required></div>
+                        <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="customer_phone" required></div>
+                        <div class="form-group"><label for="address">Delivery Address</label><textarea id="address" name="customer_address" required rows="3"></textarea></div>
+                        <div class="form-group" id="upload-group">
+                         <h3>Step 3: Upload Receipt Screenshot</h3>
+                       <input type="file" id="receipt" name="receipt_screenshot" accept="image/png, image/jpeg, image/gif" required>
+                   <!-- This span will show the name of the selected file -->
+                       <span id="file-name-display" class="file-name">No file selected.</span>
+                        </div>
+                        <!-- ID is now guaranteed to be correct -->
+                        <button type="submit" id="submit-order-btn" class="btn-submit-order" disabled>Complete Order</button>
+                    </form>
+                </section>
+            </div>
         </div>
-      </div>
     </main>
-   <footer>
-    <div class="container">
-        <div class="footer-content">
-
-            <!-- Section 1: About the Cafe -->
-            <div class="footer-section about">
-                <h2 class="logo-text"><span>Professor</span> Cafe</h2>
-                <p>
-                    Your favorite spot on campus for fresh, fast, and delicious meals.
-                </p>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> +251 912 345 678</p>
-                    <p><i class="fas fa-envelope"></i> professor@gmail.com</p>
-                    <!-- <p><i class="fas fa-map-marker-alt"></i> Main Campus, Building A, Mekelle</p> -->
-                </div>
-            </div>
-
-            <!-- Section 2: Social Media Links -->
-            <div class="footer-section social-links">
-                <h2>Follow Us</h2>
-                <div class="socials">
-                    <!-- Using Font Awesome icons instead of images -->
-                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-                    <a href="#" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            
-            <!-- Section 3: Google Map -->
-        
-
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span>© 2025 Professor Cafe | All Rights Reserved</span>
-        <a href="admin/login.php" class="admin-link">Admin Panel</a>
-    </div>
-</footer>
+    <footer>
+        <div class="footer-bottom">© 2025 professor cafe | All Rights Reserved</div>
+    </footer>
     <div id="toast-container"></div>
-    <!-- Using a new version number to guarantee no caching -->
-    <script src="checkout.js?v=3"></script>
-  </body>
+    <script src="checkout.js?v=5"></script> <!-- Version updated to force reload -->
+</body>
 </html>

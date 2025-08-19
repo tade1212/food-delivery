@@ -1,0 +1,41 @@
+/* This stylesheet is ONLY used for printing */
+@media print {
+    body {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 12pt;
+        color: #000;
+    }
+
+    /* Hide all elements that are not needed for the kitchen/delivery receipt */
+    .header, .page-actions, .update-form-container, .success-message, .receipt-section {
+        display: none !important;
+    }
+
+    /* Make sure the main content uses the full page width */
+    .container {
+        padding: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        padding: 15px !important;
+        /* This helps prevent the card from splitting across two pages when printing */
+        page-break-inside: avoid; 
+    }
+
+    .section-title {
+        font-size: 16pt;
+        border-bottom: 2px solid #000;
+        color: #000;
+    }
+
+    /* Make sure links appear as plain text when printed */
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+}
